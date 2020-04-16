@@ -1,13 +1,18 @@
 package a7;
 
-public interface Vertex {
+
+public interface Vertex extends Comparable<Vertex>{
 
 	Vertex getPathFromSource();
-	void setPathFromSource(Vertex v);
+	boolean setPathFromSource(Vertex v, int weight); 
 	default void clearPathToSource() {
-		setPathFromSource(null);
+		setPathFromSource(null, 0);
 	}
 	boolean hasPathFromSource();
-	
+	boolean hasProcessed();
+	void setProcessed(boolean processed);
 	int getDistanceFromSource();
+	int compareTo(Vertex other);
+	
 }
+
